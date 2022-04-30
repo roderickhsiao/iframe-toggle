@@ -10,41 +10,28 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        <h1 className={styles.title}>Forethought IFrame Solutions Prototype</h1>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.tsx</code>
-        </p>
+        <p className={styles.description}>Experiments different solutions handling widget transitions.</p>
 
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
+          <a href="/iframe-composition" className={styles.card}>
+            <h2>Single Iframe Composition</h2>
+            <p>Use Single Iframe/Single PWA to handle state change</p>
           </a>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
+          <a href="/react-portal" className={styles.card}>
+            <h2>React Portal</h2>
             <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
+              (WIP) Use Single Iframe/Single PWA but mount in different root
+            </p>
+          </a>
+
+          <a href="/multiple-iframe" className={styles.card}>
+            <h2>Multiple Iframe</h2>
+            <p>
+              (WIP) Use Multiple Iframe/Multiple PWA controlled by centralized
+              js
             </p>
           </a>
         </div>
