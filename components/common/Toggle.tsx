@@ -3,10 +3,12 @@ import ChatIcon from '@mui/icons-material/Chat';
 
 const Toggle = ({ onClick }: { onClick: React.MouseEventHandler }) => {
   return (
-    <Fab variant="extended" onClick={onClick} className="m-4">
-      <ChatIcon sx={{ mr: 1 }} />
-      Chat
-    </Fab>
+    <div className="m-4">
+      <Fab variant="extended" onClick={onClick}>
+        <ChatIcon sx={{ mr: 1 }} />
+        Chat
+      </Fab>
+    </div>
   );
 };
 
