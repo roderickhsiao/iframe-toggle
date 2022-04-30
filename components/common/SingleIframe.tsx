@@ -44,9 +44,6 @@ const SingleIframe = () => {
           key={state}
           classNames="fade"
           timeout={300}
-          addEndListener={(node, done) =>
-            node.addEventListener('transitionend', done, false)
-          }
           onEnter={updateIframeSize}
           onExited={updateIframeSize}
         >
