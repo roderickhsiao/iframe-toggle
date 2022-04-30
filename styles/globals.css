@@ -12,8 +12,7 @@
 }
 .fade-enter-active,
 .fade-exit-active {
-  transition: opacity 200ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 250ms;
 }
 
 @tailwind base;
