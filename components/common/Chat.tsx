@@ -1,5 +1,6 @@
 import Paper from '@mui/material/Paper';
 import Avatar from '@mui/material/Avatar';
+import CloseIcon from '@mui/icons-material/Close';
 
 const Chat = ({ onClick }: { onClick: React.MouseEventHandler }) => {
   return (
@@ -12,6 +13,8 @@ const Chat = ({ onClick }: { onClick: React.MouseEventHandler }) => {
                 <Avatar>FT</Avatar>
                 <span className="block ml-2 font-bold text-gray-600">Forethought AI</span>
                 <span className="absolute w-3 h-3 bg-green-600 rounded-full left-10 top-3"></span>
+                <div className="absolute right-3"><CloseIcon /></div>
+                
               </div>
               <div className="relative w-full p-6 overflow-y-auto flex-1">
                 <ul className="space-y-2">
