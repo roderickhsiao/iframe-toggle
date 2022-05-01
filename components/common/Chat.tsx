@@ -1,11 +1,10 @@
-import Paper from '@mui/material/Paper';
 import Avatar from '@mui/material/Avatar';
 import CloseIcon from '@mui/icons-material/Close';
 
 const Chat = ({ onClick }: { onClick: React.MouseEventHandler }) => {
   return (
     <div className="p-4">
-      <Paper elevation={3}>
+      <div className="shadow-lg bg-white">
         <div className="container mx-auto w-[22rem] h-[600px] flex">
           <div className="max-w-2xl border rounded">
             <>
@@ -123,7 +122,7 @@ const Chat = ({ onClick }: { onClick: React.MouseEventHandler }) => {
             </>
           </div>
         </div>
-      </Paper>
+      </div>
     </div>
   );
 };
