@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import ChatIcon from '@mui/icons-material/Chat';
 
 const Toggle = ({ onClick }: { onClick: React.MouseEventHandler }) => {
@@ -14,4 +15,4 @@ const Toggle = ({ onClick }: { onClick: React.MouseEventHandler }) => {
   );
 };
 
-export default Toggle;
+export default memo(Toggle);

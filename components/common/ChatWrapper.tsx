@@ -1,4 +1,4 @@
-import { useCallback, useRef, useEffect } from 'react';
+import { useCallback, useRef, useEffect, memo } from 'react';
 
 import Chat from './Chat';
 
@@ -37,4 +37,4 @@ const ChatWrapper = () => {
   );
 };
 
-export default ChatWrapper;
+export default memo(ChatWrapper);

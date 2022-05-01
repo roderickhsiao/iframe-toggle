@@ -1,4 +1,4 @@
-import { useCallback, useRef, useEffect } from 'react';
+import { useCallback, useRef, useEffect, memo } from 'react';
 
 import Toggle from './Toggle';
 
@@ -38,4 +38,4 @@ const ToggleWrapper = () => {
   );
 };
 
-export default ToggleWrapper;
+export default memo(ToggleWrapper);

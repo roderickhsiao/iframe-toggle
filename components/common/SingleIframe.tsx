@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect, useRef, useCallback } from 'react';
+import { useState, useMemo, useEffect, useRef, useCallback, memo } from 'react';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 
 import Toggle from './Toggle';
@@ -6,7 +6,6 @@ import Chat from './Chat';
 
 const SingleIframe = () => {
   const [state, setState] = useState('toggle');
-  const [messageState, setMessageState] = useState('toggle');
   const containerRef = useRef<HTMLElement>(null);
 
   const updateIframeSize = useCallback(() => {
@@ -29,13 +28,12 @@ const SingleIframe = () => {
     updateIframeSize()
   }, [updateIframeSize]);
 
-  const node = useMemo(() => {
-    if (state === 'chat') {
-      return <Chat onClick={() => setState('toggle')} />;
-    } else {
-      return <Toggle onClick={() => setState('chat')} />;
-    }
-  }, [state]);
+  const chatNode = useMemo(() => <Chat onClick={() => setState('toggle')} />, []);
+  const toggleNode = useMemo(() => <Toggle onClick={() => setState('chat')} />, [])
+  const handleAnimationEnd = useCallback((node: HTMLElement, done: VoidFunction) => {
+    // use the css transitionend event to mark the finish of a transition
+    node.addEventListener('animationend', done, false);
+  }, []);
 
   return (
     <section className="w-fit m-0" ref={containerRef}>
@@ -46,16 +44,13 @@ const SingleIframe = () => {
           timeout={300}
           onEnter={updateIframeSize}
           onExited={updateIframeSize}
-          addEndListener={(node, done) => {
-            // use the css transitionend event to mark the finish of a transition
-            node.addEventListener('animationend', done, false);
-          }}
+          addEndListener={handleAnimationEnd}
         >
-          {node}
+          {state === 'chat' ? chatNode : toggleNode}
         </CSSTransition>
       </SwitchTransition>
     </section>
   );
 };
 
-export default SingleIframe;
+export default memo(SingleIframe);

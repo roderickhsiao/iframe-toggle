@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect, useRef, useCallback } from 'react';
+import { memo, useState, useMemo, useEffect, useRef, useCallback } from 'react';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import Toggle from './Toggle';
@@ -6,7 +6,6 @@ import Chat from './Chat';
 
 const SingleIframeGroup = () => {
   const [state, setState] = useState('toggle');
-  const [messageState, setMessageState] = useState('toggle');
   const toggleRef = useRef<HTMLElement>(null);
   const chatRef = useRef<HTMLElement>(null);
 
@@ -29,20 +28,31 @@ const SingleIframeGroup = () => {
     updateIframeSize(state === 'toggle' ? toggleRef.current : chatRef.current);
   }, [updateIframeSize]);
 
-  const node = useMemo(() => {
-    if (state === 'chat') {
-      return (
-        <section className="w-fit m-0 will-change-auto" ref={chatRef}>
-          <Chat onClick={() => setState('toggle')} />
-        </section>
-      );
-    }
-    return (
-      <section className="w-fit m-0 absolute bottom-0 right-0 will-change-auto" ref={toggleRef}>
+  const chatNode = useMemo(
+    () => (
+      <section className="w-fit m-0 will-change-auto" ref={chatRef}>
+        <Chat onClick={() => setState('toggle')} />
+      </section>
+    ),
+    []
+  );
+
+  const toggleNode = useMemo(
+    () => (
+      <section
+        className="w-fit m-0 absolute bottom-0 right-0 will-change-auto"
+        ref={toggleRef}
+      >
         <Toggle onClick={() => setState('chat')} />
       </section>
-    );
-  }, [state]);
+    ),
+    []
+  );
+
+  const handleAnimationEnd = useCallback((node: HTMLElement, done: VoidFunction) => {
+    // use the css transitionend event to mark the finish of a transition
+    node.addEventListener('animationend', done, false);
+  }, []);
 
   return (
     <TransitionGroup>
@@ -58,15 +68,12 @@ const SingleIframeGroup = () => {
             ? () => updateIframeSize(toggleRef.current)
             : undefined
         }
-        addEndListener={(node, done) => {
-          // use the css transitionend event to mark the finish of a transition
-          node.addEventListener('animationend', done, false);
-        }}
+        addEndListener={handleAnimationEnd}
       >
-        {node}
+        {state === 'chat' ? chatNode : toggleNode}
       </CSSTransition>
     </TransitionGroup>
   );
 };
 
-export default SingleIframeGroup;
+export default memo(SingleIframeGroup);

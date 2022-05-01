@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { memo, useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
 import Toggle from './Toggle';
@@ -29,6 +29,34 @@ const SingleIframeSwitch = () => {
     updateIframeSize(state === 'toggle' ? toggleRef.current : chatRef.current);
   }, []);
 
+  const chatNode = useMemo(
+    () => (
+      <section className="w-fit m-0 absolute bottom-0 right-0 will-change-auto">
+        <div ref={toggleRef}>
+          <Toggle onClick={() => setState('chat')} />
+        </div>
+      </section>
+    ),
+    []
+  );
+
+  const toggleNode = useMemo(
+    () => (
+      <section className="w-fit m-0 will-change-auto">
+        <div ref={chatRef}>
+          <Chat onClick={() => setState('toggle')} />
+        </div>
+      </section>
+    ),
+    []
+  );
+
+  const handleAnimationEnd = useCallback((node: HTMLElement, done: VoidFunction) => {
+    // use the css transitionend event to mark the finish of a transition
+    node.addEventListener('animationend', done, false);
+  }, []);
+
+
   // Pros:
   // - Could have different animations
   // - Animations are parallel
@@ -39,7 +67,7 @@ const SingleIframeSwitch = () => {
 
   // Implementation:
   // - Only change iframe size on chat enter/exited (larger screen)
-  // - Button will be absolute position to prevent jumping on iframe size change 
+  // - Button will be absolute position to prevent jumping on iframe size change
 
   return (
     <>
@@ -49,16 +77,9 @@ const SingleIframeSwitch = () => {
         timeout={300}
         mountOnEnter
         unmountOnExit
-        addEndListener={(node, done) => {
-          // use the css transitionend event to mark the finish of a transition
-          node.addEventListener('animationend', done, false);
-        }}
+        addEndListener={handleAnimationEnd}
       >
-        <section className="w-fit m-0 absolute bottom-0 right-0 will-change-auto">
-          <div ref={toggleRef}>
-            <Toggle onClick={() => setState('chat')} />
-          </div>
-        </section>
+        {chatNode}
       </CSSTransition>
       <CSSTransition
         in={state === 'chat'}
@@ -68,19 +89,10 @@ const SingleIframeSwitch = () => {
         unmountOnExit
         onEnter={() => updateIframeSize(chatRef.current)} // only handle resize on chat (larger screen)
         onExited={() => updateIframeSize(toggleRef.current)} // only handle resize on chat (larger screen)
-        addEndListener={(node, done) => {
-          // use the css transitionend event to mark the finish of a transition
-          node.addEventListener('animationend', done, false);
-        }}
-      >
-        <section className="w-fit m-0 will-change-auto">
-          <div ref={chatRef}>
-            <Chat onClick={() => setState('toggle')} />
-          </div>
-        </section>
-      </CSSTransition>
+        addEndListener={handleAnimationEnd}
+      ></CSSTransition>
     </>
   );
 };
 
-export default SingleIframeSwitch;
+export default memo(SingleIframeSwitch);

@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import Avatar from '@mui/material/Avatar';
 import CloseIcon from '@mui/icons-material/Close';
 
@@ -127,4 +128,4 @@ const Chat = ({ onClick }: { onClick: React.MouseEventHandler }) => {
   );
 };
 
-export default Chat;
+export default memo(Chat);
