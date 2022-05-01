@@ -42,11 +42,11 @@ const SingleIframeSwitch = () => {
       <CSSTransition
         in={state === 'toggle'}
         classNames="switch"
-        timeout={0}
+        timeout={300}
         mountOnEnter
         unmountOnExit
       >
-        <section className="w-fit m-0 absolute bottom-0 right-0">
+        <section className="w-fit m-0 fixed bottom-0 right-0">
           <div ref={toggleRef}>
             <Toggle onClick={() => setState('chat')} />
           </div>
