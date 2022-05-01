@@ -12,18 +12,16 @@ const SingleIframeSwitch = () => {
 
   const updateIframeSize = useCallback((container: HTMLElement | null) => {
     // window.top refers to parent window
-    requestAnimationFrame(() => {
-      if (!container) {
-        return;
-      }
-      const message = {
-        type: 'resize',
-        height: container.getBoundingClientRect().height,
-        width: container.getBoundingClientRect().width,
-      };
+    if (!container) {
+      return;
+    }
+    const message = {
+      type: 'resize',
+      height: container.getBoundingClientRect().height,
+      width: container.getBoundingClientRect().width,
+    };
 
-      window?.top?.postMessage(message, '*');
-    });
+    window?.top?.postMessage(message, '*');
   }, []);
 
   // initial mount

@@ -10,19 +10,17 @@ const SingleIframe = () => {
 
   const updateIframeSize = useCallback(() => {
     const container = containerRef.current;
-    requestAnimationFrame(() => {
-      if (!container) {
-        return;
-      }
-      // window.top refers to parent window
-      const message = {
-        type: 'resize',
-        height: container.getBoundingClientRect().height,
-        width: container.getBoundingClientRect().width,
-      };
+    if (!container) {
+      return;
+    }
+    // window.top refers to parent window
+    const message = {
+      type: 'resize',
+      height: container.getBoundingClientRect().height,
+      width: container.getBoundingClientRect().width,
+    };
 
-      window?.top?.postMessage(message, '*');
-    });
+    window?.top?.postMessage(message, '*');
   }, []);
 
   // initial mount

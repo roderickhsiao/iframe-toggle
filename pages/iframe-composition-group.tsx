@@ -4,14 +4,17 @@ import Home from '../components/MainApp';
 const HomePage = () => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const handleIframeResize = useCallback((event: MessageEvent) => {
-    if (!iframeRef.current) {
-      return;
-    }
     const message = event.data;
     switch (event.data.type) {
       case 'resize': {
-        iframeRef.current.style.height = message.height + 'px';
-        iframeRef.current.style.width = message.width + 'px';
+        requestAnimationFrame(() => {
+          if (!iframeRef.current) {
+            return;
+          }
+          iframeRef.current.style.height = message.height + 'px';
+          iframeRef.current.style.width = message.width + 'px';
+        });
+
         break;
       }
     }

@@ -15,17 +15,15 @@ const ChatWrapper = () => {
   }, []);
 
   const updateIframeSize = useCallback(() => {
-    requestAnimationFrame(() => {
-      if (nodeRef.current) {
-        const message = {
-          type: 'resize',
-          name: 'chat',
-          height: nodeRef.current.getBoundingClientRect().height,
-          width: nodeRef.current.getBoundingClientRect().width,
-        };
-        window?.top?.postMessage(message, '*');
-      }
-    });
+    if (nodeRef.current) {
+      const message = {
+        type: 'resize',
+        name: 'chat',
+        height: nodeRef.current.getBoundingClientRect().height,
+        width: nodeRef.current.getBoundingClientRect().width,
+      };
+      window?.top?.postMessage(message, '*');
+    }
   }, [nodeRef]);
 
   useEffect(() => {

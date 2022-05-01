@@ -15,17 +15,15 @@ const ToggleWrapper = () => {
   }, []);
 
   const updateIframeSize = useCallback(() => {
-    requestAnimationFrame(() => {
-      if (nodeRef.current) {
-        const message = {
-          type: 'resize',
-          name: 'toggle',
-          height: nodeRef.current.getBoundingClientRect().height,
-          width: nodeRef.current.getBoundingClientRect().width,
-        };
-        window?.top?.postMessage(message, '*');
-      }
-    });
+    if (nodeRef.current) {
+      const message = {
+        type: 'resize',
+        name: 'toggle',
+        height: nodeRef.current.getBoundingClientRect().height,
+        width: nodeRef.current.getBoundingClientRect().width,
+      };
+      window?.top?.postMessage(message, '*');
+    }
   }, []);
 
   useEffect(() => {
