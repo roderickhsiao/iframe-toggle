@@ -71,7 +71,7 @@ const Home = ({
               'shadow-sm hover:bg-blue-500 hover:ring-blue-500 hover:shadow-md',
               'dark:bg-slate-700 dark:ring-0 dark:highlight-white/10 dark:hover:bg-blue-500',
               {
-                'ring-blue-500': router.pathname === '/iframe-composition',
+                'ring-blue-500': router.pathname === '/iframe-composition-group',
               }
             )}
           >

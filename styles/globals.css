@@ -38,17 +38,30 @@
 .fade-exit {
   animation-name: fadeOut;
 }
+.fade-exit-done {
+  opacity: 0;
+}
 
 .fade-enter {
   animation-name: fadeIn;
+}
+.fade-enter-done {
+  opacity: 1;
 }
 
 .switch-exit {
   animation-name: fadeOutDown;
 }
 
+.switch-exit-done {
+  opacity: 0;
+}
+
 .switch-enter {
   animation-name: fadeInUp;
+}
+.switch-enter-done {
+  opacity: 1;
 }
 
 .switch-enter,
