@@ -30,15 +30,14 @@ const HomePage = () => {
 
   const note = `
   Pros:
-    - Simpler iframe resizing logic
-    - Simpler rendering logic
-    - Won't have race condition for re-render and iframe size update
+    - Similar animation logic for multiple iFrames
+    - Use solely CSS and React to handle animation (without css-transition-group)
 
   Cons:
-    - Animation happens in sequence, not parallel
+    - React needs to re-render twice to signal the end of a transition
 
   Implementation:
-    - Use SwitchTransition to change single layout
+    - User Pure CSS + React
 
   `;
 
