@@ -37,6 +37,10 @@ const SingleIframeSwitch = () => {
   // - Complicated timing handling
   // - Might only have entry animation
 
+  // Implementation:
+  // - Only change iframe size on chat enter/exited (larger screen)
+  // - Button will be absolute position to prevent jumping on iframe size change 
+
   return (
     <>
       <CSSTransition
@@ -46,7 +50,7 @@ const SingleIframeSwitch = () => {
         mountOnEnter
         unmountOnExit
       >
-        <section className="w-fit m-0 fixed bottom-0 right-0">
+        <section className="w-fit m-0 absolute bottom-0 right-0">
           <div ref={toggleRef}>
             <Toggle onClick={() => setState('chat')} />
           </div>
@@ -58,10 +62,10 @@ const SingleIframeSwitch = () => {
         timeout={300}
         mountOnEnter
         unmountOnExit
-        onEnter={() => updateIframeSize(chatRef.current)}
-        onExited={() => updateIframeSize(toggleRef.current)}
+        onEnter={() => updateIframeSize(chatRef.current)} // only handle resize on chat (larger screen)
+        onExited={() => updateIframeSize(toggleRef.current)} // only handle resize on chat (larger screen)
       >
-        <section className="w-fit m-0 ">
+        <section className="w-fit m-0">
           <div ref={chatRef}>
             <Chat onClick={() => setState('toggle')} />
           </div>

@@ -128,9 +128,24 @@ const HomePage = () => {
     };
   }, [handleIframeMessage]);
 
+  const note = `
+  Pros:
+    - Abstraction for switching iframe
+    - React app doesn't need to know current state (no re-render needed)
+    - iframe size remains the same, less painting
+    - Less likely to have race condition
+
+  Cons:
+    - Need to change base assumptions (only one app will activated at a time)
+    - Need to be very cautious about browser paint frame update
+
+  Implementation:
+    - Hand craft CSS transition outside of React app
+  `;
+
   return (
     <>
-      <Home title="Multiple Iframes" />
+      <Home title="Multiple Iframes" note={note} description="Create multiple iframes and handle entry/exit outside of React app" />
       <iframe
         src="/multiple-iframes-chat"
         className="fixed right-0 bottom-0 border-0 w-0 h-0 overflow-hidden opacity-0 pointer-events-none ease-in-out"
