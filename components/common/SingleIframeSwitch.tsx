@@ -46,7 +46,7 @@ const SingleIframeSwitch = () => {
       <CSSTransition
         in={state === 'toggle'}
         classNames="switch"
-        timeout={300}
+        timeout={400}
         mountOnEnter
         unmountOnExit
       >
@@ -59,7 +59,7 @@ const SingleIframeSwitch = () => {
       <CSSTransition
         in={state === 'chat'}
         classNames="switch"
-        timeout={300}
+        timeout={400}
         mountOnEnter
         unmountOnExit
         onEnter={() => updateIframeSize(chatRef.current)} // only handle resize on chat (larger screen)

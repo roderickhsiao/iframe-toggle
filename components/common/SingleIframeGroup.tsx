@@ -49,7 +49,7 @@ const SingleIframeGroup = () => {
       <CSSTransition
         key={state}
         classNames="switch"
-        timeout={300}
+        timeout={400}
         onEnter={
           state === 'chat' ? () => updateIframeSize(chatRef.current) : undefined
         }

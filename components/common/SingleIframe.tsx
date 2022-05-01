@@ -43,7 +43,7 @@ const SingleIframe = () => {
         <CSSTransition
           key={state}
           classNames="fade"
-          timeout={300}
+          timeout={400}
           onEnter={updateIframeSize}
           onExited={updateIframeSize}
         >
