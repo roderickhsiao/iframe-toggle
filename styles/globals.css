@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@keyframes fadeInUp {
+/* @keyframes fadeInUp {
   from {
     transform: translate3d(0, 100%, 0);
     opacity: 0;
@@ -24,46 +24,49 @@
     transform: translate3d(0, 100%, 0);
     opacity: 0;
   }
-}
+} */
 
-@keyframes fadeIn {
+/* @keyframes fadeIn {
   from { opacity: 0 }
   to { opacity: 1; }
 }
 @keyframes fadeOut {
   from { opacity: 1 }
   to { opacity: 0; }
-}
+} */
 
 .fade-enter {
   opacity: 0;
 }
 .fade-enter-active {
-  animation-name: fadeIn;
+  opacity: 1;
 }
 
 .fade-exit {
   opacity: 1;
 }
 .fade-exit-active {
-  animation-name: fadeOut;
+  opacity: 0;
 }
 
 .switch-enter {
   opacity: 0;
+  transform: translate3d(0, 100%, 0);
 }
 .switch-enter-active {
-  animation-name: fadeInUp;
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
 }
 
 .switch-exit {
   opacity: 0;
+  transform: translate3d(0, 0, 0);
 }
+
 .switch-exit-active {
-  animation-name: fadeOutDown;
+  transform: translate3d(0, 100%, 0);
+  opacity: 1;
 }
-
-
 
 .switch-enter-active,
 .switch-exit-active,

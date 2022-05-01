@@ -49,10 +49,10 @@ const SingleIframeGroup = () => {
     []
   );
 
-  const handleAnimationEnd = useCallback(
+  const handleTransitionEnd = useCallback(
     (node: HTMLElement, done: VoidFunction) => {
       // use the css transitionend event to mark the finish of a transition
-      node.addEventListener('animationend', done, false);
+      node.addEventListener('transitionend', done, false);
     },
     []
   );
@@ -71,7 +71,7 @@ const SingleIframeGroup = () => {
             ? () => updateIframeSize(toggleRef.current)
             : undefined
         }
-        addEndListener={handleAnimationEnd}
+        addEndListener={handleTransitionEnd}
       >
         {state === 'chat' ? chatNode : toggleNode}
       </CSSTransition>

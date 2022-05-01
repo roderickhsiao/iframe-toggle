@@ -51,10 +51,10 @@ const SingleIframeSwitch = () => {
     []
   );
 
-  const handleAnimationEnd = useCallback(
+  const handleTransitionEnd = useCallback(
     (node: HTMLElement, done: VoidFunction) => {
       // use the css transitionend event to mark the finish of a transition
-      node.addEventListener('animationend', done, false);
+      node.addEventListener('transitionend', done, false);
     },
     []
   );
@@ -79,7 +79,7 @@ const SingleIframeSwitch = () => {
         timeout={300}
         mountOnEnter
         unmountOnExit
-        addEndListener={handleAnimationEnd}
+        addEndListener={handleTransitionEnd}
       >
         {chatNode}
       </CSSTransition>
@@ -91,7 +91,7 @@ const SingleIframeSwitch = () => {
         unmountOnExit
         onEnter={() => updateIframeSize(chatRef.current)} // only handle resize on chat (larger screen)
         onExited={() => updateIframeSize(toggleRef.current)} // only handle resize on chat (larger screen)
-        addEndListener={handleAnimationEnd}
+        addEndListener={handleTransitionEnd}
       >
         {toggleNode}
       </CSSTransition>
