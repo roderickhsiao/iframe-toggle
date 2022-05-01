@@ -35,26 +35,40 @@
   to { opacity: 0; }
 }
 
-.fade-exit {
-  animation-name: fadeOut;
-}
-
 .fade-enter {
+  opacity: 0;
+}
+.fade-enter-active {
   animation-name: fadeIn;
 }
 
-.switch-exit {
-  animation-name: fadeOutDown;
+.fade-exit {
+  opacity: 1;
+}
+.fade-exit-active {
+  animation-name: fadeOut;
 }
 
 .switch-enter {
+  opacity: 0;
+}
+.switch-enter-active {
   animation-name: fadeInUp;
 }
 
-.switch-enter,
-.switch-exit,
-.fade-enter,
-.fade-exit {
+.switch-exit {
+  opacity: 0;
+}
+.switch-exit-active {
+  animation-name: fadeOutDown;
+}
+
+
+
+.switch-enter-active,
+.switch-exit-active,
+.fade-enter-active,
+.fade-exit-active {
   transition-duration: 300ms;
   animation-duration: 300ms;
 }
