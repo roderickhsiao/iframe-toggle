@@ -3,7 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @keyframes slideInUp {
   from {
     transform: translate3d(0, 100%, 0);
@@ -45,8 +44,22 @@
   animation-name: fadeIn;
 }
 
+.switch-exit {
+  display: none;
+}
+
+.switch-enter {
+  animation-name: fadeIn;
+}
+
+.switch-enter,
+.switch-exit,
 .fade-enter,
 .fade-exit {
   transition-duration: 300ms;
   animation-duration: 300ms;
+}
+
+:root {
+  --animate-duration: 300ms;
 }

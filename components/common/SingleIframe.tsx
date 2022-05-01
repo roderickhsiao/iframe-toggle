@@ -37,6 +37,14 @@ const SingleIframe = () => {
     }
   }, [state]);
 
+  // Pros:
+  // - Simpler iframe resizing logic
+  // - Simpler rendering logic
+  // - Won't have race condition for re-render and iframe size update
+
+  // Cons:
+  // - Animation happens in sequence, not parallel
+
   return (
     <section className="w-fit" ref={containerRef}>
       <SwitchTransition>

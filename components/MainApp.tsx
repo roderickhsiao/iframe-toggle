@@ -22,24 +22,24 @@ const Home: NextPage = () => {
           <Link href="/iframe-composition">
             <a className={styles.card}>
               <h2>Single Iframe Composition</h2>
-              <p>Use Single Iframe/Single PWA to handle state change</p>
+              <p>Use Single Iframe/Single PWA to handle state change, use SwitchTransition</p>
             </a>
           </Link>
 
-          <Link href="/react-portal">
+          <Link href="/iframe-composition-switch">
             <a className={styles.card}>
-              <h2>React Portal</h2>
+              <h2>Single Iframe Switch Layout</h2>
               <p>
-                (WIP) Use Single Iframe/Single PWA but mount in different root
+                Toggle two layout using CSSTransition
               </p>
             </a>
           </Link>
 
-          <Link href="/multiple-iframe">
+          <Link href="/iframe-composition-multiple">
             <a className={styles.card}>
               <h2>Multiple Iframe</h2>
               <p>
-                (WIP) Use Multiple Iframe/Multiple PWA controlled by centralized
+                Use Multiple Iframe/Multiple PWA controlled by centralized
                 js
               </p>
             </a>
