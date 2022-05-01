@@ -10,17 +10,19 @@ const SingleIframeGroup = () => {
   const chatRef = useRef<HTMLElement>(null);
 
   const updateIframeSize = useCallback((container: HTMLElement | null) => {
-    if (!container) {
-      return;
-    }
-    // window.top refers to parent window
-    const message = {
-      type: 'resize',
-      height: container.getBoundingClientRect().height,
-      width: container.getBoundingClientRect().width,
-    };
+    requestAnimationFrame(() => {
+      if (!container) {
+        return;
+      }
+      // window.top refers to parent window
+      const message = {
+        type: 'resize',
+        height: container.getBoundingClientRect().height,
+        width: container.getBoundingClientRect().width,
+      };
 
-    window?.top?.postMessage(message, '*');
+      window?.top?.postMessage(message, '*');
+    });
   }, []);
 
   // initial mount
@@ -49,10 +51,13 @@ const SingleIframeGroup = () => {
     []
   );
 
-  const handleAnimationEnd = useCallback((node: HTMLElement, done: VoidFunction) => {
-    // use the css transitionend event to mark the finish of a transition
-    node.addEventListener('animationend', done, false);
-  }, []);
+  const handleAnimationEnd = useCallback(
+    (node: HTMLElement, done: VoidFunction) => {
+      // use the css transitionend event to mark the finish of a transition
+      node.addEventListener('animationend', done, false);
+    },
+    []
+  );
 
   return (
     <TransitionGroup>

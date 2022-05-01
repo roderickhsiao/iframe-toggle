@@ -10,30 +10,41 @@ const SingleIframe = () => {
 
   const updateIframeSize = useCallback(() => {
     const container = containerRef.current;
-    if (!container) {
-      return;
-    }
-    // window.top refers to parent window
-    const message = {
-      type: 'resize',
-      height: container.getBoundingClientRect().height,
-      width: container.getBoundingClientRect().width,
-    };
+    requestAnimationFrame(() => {
+      if (!container) {
+        return;
+      }
+      // window.top refers to parent window
+      const message = {
+        type: 'resize',
+        height: container.getBoundingClientRect().height,
+        width: container.getBoundingClientRect().width,
+      };
 
-    window?.top?.postMessage(message, '*');
+      window?.top?.postMessage(message, '*');
+    });
   }, []);
 
   // initial mount
   useEffect(() => {
-    updateIframeSize()
+    updateIframeSize();
   }, [updateIframeSize]);
 
-  const chatNode = useMemo(() => <Chat onClick={() => setState('toggle')} />, []);
-  const toggleNode = useMemo(() => <Toggle onClick={() => setState('chat')} />, [])
-  const handleAnimationEnd = useCallback((node: HTMLElement, done: VoidFunction) => {
-    // use the css transitionend event to mark the finish of a transition
-    node.addEventListener('animationend', done, false);
-  }, []);
+  const chatNode = useMemo(
+    () => <Chat onClick={() => setState('toggle')} />,
+    []
+  );
+  const toggleNode = useMemo(
+    () => <Toggle onClick={() => setState('chat')} />,
+    []
+  );
+  const handleAnimationEnd = useCallback(
+    (node: HTMLElement, done: VoidFunction) => {
+      // use the css transitionend event to mark the finish of a transition
+      node.addEventListener('animationend', done, false);
+    },
+    []
+  );
 
   return (
     <section className="w-fit m-0" ref={containerRef}>
@@ -46,7 +57,7 @@ const SingleIframe = () => {
           onExited={updateIframeSize}
           addEndListener={handleAnimationEnd}
         >
-          {state === 'chat' ? chatNode : toggleNode}
+          <>{state === 'chat' ? chatNode : toggleNode}</>
         </CSSTransition>
       </SwitchTransition>
     </section>

@@ -11,17 +11,19 @@ const SingleIframeSwitch = () => {
   const toggleRef = useRef<HTMLDivElement>(null);
 
   const updateIframeSize = useCallback((container: HTMLElement | null) => {
-    if (!container) {
-      return;
-    }
     // window.top refers to parent window
-    const message = {
-      type: 'resize',
-      height: container.getBoundingClientRect().height,
-      width: container.getBoundingClientRect().width,
-    };
+    requestAnimationFrame(() => {
+      if (!container) {
+        return;
+      }
+      const message = {
+        type: 'resize',
+        height: container.getBoundingClientRect().height,
+        width: container.getBoundingClientRect().width,
+      };
 
-    window?.top?.postMessage(message, '*');
+      window?.top?.postMessage(message, '*');
+    });
   }, []);
 
   // initial mount
@@ -51,11 +53,13 @@ const SingleIframeSwitch = () => {
     []
   );
 
-  const handleAnimationEnd = useCallback((node: HTMLElement, done: VoidFunction) => {
-    // use the css transitionend event to mark the finish of a transition
-    node.addEventListener('animationend', done, false);
-  }, []);
-
+  const handleAnimationEnd = useCallback(
+    (node: HTMLElement, done: VoidFunction) => {
+      // use the css transitionend event to mark the finish of a transition
+      node.addEventListener('animationend', done, false);
+    },
+    []
+  );
 
   // Pros:
   // - Could have different animations
@@ -90,7 +94,9 @@ const SingleIframeSwitch = () => {
         onEnter={() => updateIframeSize(chatRef.current)} // only handle resize on chat (larger screen)
         onExited={() => updateIframeSize(toggleRef.current)} // only handle resize on chat (larger screen)
         addEndListener={handleAnimationEnd}
-      ></CSSTransition>
+      >
+        {toggleNode}
+      </CSSTransition>
     </>
   );
 };
