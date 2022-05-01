@@ -37,7 +37,9 @@ const HomePage = () => {
     - React needs to re-render twice to signal the end of a transition
 
   Implementation:
-    - User Pure CSS + React
+    - User Pure CSS + React (keyframe)
+    - Toggle Button absolutely positioned
+    - Update iframe size on transition end
 
   `;
 
