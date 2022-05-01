@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 
-const Home = ({ title }: { title: string }) => {
+const Home = ({ title }: { title?: string }) => {
   return (
     <div className="min-h-screen isolated">
       <Head>
