@@ -134,6 +134,7 @@ const HomePage = () => {
     - React app doesn't need to know current state (no re-render needed)
     - iframe size remains the same, less painting
     - Less likely to have race condition
+    - Best painting performance
 
   Cons:
     - Need to change base assumptions (only one app will activated at a time)

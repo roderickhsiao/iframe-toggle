@@ -33,6 +33,7 @@ const IframeCompositionSwitch = () => {
 
   Cons:
     - Complicated timing handling
+    - Rendering during transition could cause render performance issue
 
   Implementation:
    - Only change iframe size on chat enter/exited (larger screen)

@@ -34,6 +34,7 @@ const HomePage = () => {
   Cons:
     - Condition rendering might be complicated if we have more items to switch
     - Each child is cloned inside Transition Group
+    - Rendering during transition could cause render performance issue
   
   Implementation:
     - Use Transition Group to change single layout
