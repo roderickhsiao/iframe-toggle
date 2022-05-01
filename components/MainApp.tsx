@@ -75,10 +75,32 @@ const Home = ({
               }
             )}
           >
+            <Link href="/iframe-composition-group">
+              <a className="grid sm:block lg:grid xl:block grid-cols-2 grid-rows-2 items-center">
+                <h2 className="font-semibold text-slate-900 group-hover:text-white dark:text-slate-100">
+                  Single Iframe TransitionGroup
+                </h2>
+                <p className="group-hover:text-blue-200">
+                  Use Single Iframe/Single PWA to handle state change, use
+                  TransitionGroup
+                </p>
+              </a>
+            </Link>
+          </li>
+          <li
+            className={clsx(
+              'group cursor-pointer rounded-md p-3 bg-white ring-1 ring-slate-200',
+              'shadow-sm hover:bg-blue-500 hover:ring-blue-500 hover:shadow-md',
+              'dark:bg-slate-700 dark:ring-0 dark:highlight-white/10 dark:hover:bg-blue-500',
+              {
+                'ring-blue-500': router.pathname === '/iframe-composition',
+              }
+            )}
+          >
             <Link href="/iframe-composition">
               <a className="grid sm:block lg:grid xl:block grid-cols-2 grid-rows-2 items-center">
                 <h2 className="font-semibold text-slate-900 group-hover:text-white dark:text-slate-100">
-                  Single Iframe Composition
+                  Single Iframe SwitchTransition
                 </h2>
                 <p className="group-hover:text-blue-200">
                   Use Single Iframe/Single PWA to handle state change, use

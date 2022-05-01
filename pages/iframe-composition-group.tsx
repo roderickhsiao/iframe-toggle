@@ -32,22 +32,23 @@ const HomePage = () => {
     - Won't have race condition for re-render and iframe size update
 
   Cons:
-    - Animation happens in sequence, not parallel
-
+    - Condition rendering might be complicated if we have more items to switch
+    - Each child is cloned inside Transition Group
+  
   Implementation:
-    - Use SwitchTransition to change single layout
+    - Use Transition Group to change single layout
 
   `;
 
   return (
     <>
       <Home
-        title="Single Iframe Composition"
+        title="Single Iframe TransitionGroup"
         note={note}
-        description="Use Single Iframe/Single PWA to handle state change, use SwitchTransition"
+        description="Use Single Iframe/Single PWA to handle state change, TransitionGroup"
       />
       <iframe
-        src="/single-iframe"
+        src="/single-iframe-group"
         className="fixed right-0 bottom-0 border-0 w-0 h-0 overflow-hidden"
         ref={iframeRef}
       />
