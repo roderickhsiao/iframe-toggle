@@ -128,13 +128,9 @@ const HomePage = () => {
     };
   }, [handleIframeMessage]);
 
-
   return (
     <>
-      <h1 className="font-sans text-xl m-auto w-full text-center">
-        Multiple Iframes
-      </h1>
-      <Home />
+      <Home title="Multiple Iframes" />
       <iframe
         src="/multiple-iframes-chat"
         className="fixed right-0 bottom-0 border-0 w-0 h-0 overflow-hidden opacity-0 pointer-events-none ease-in-out"

@@ -47,7 +47,7 @@ const SingleIframeSwitch = () => {
         unmountOnExit
         onEnter={() => updateIframeSize(toggleRef.current)}
       >
-        <section className="w-fit">
+        <section className="w-fit m-0">
           <div ref={toggleRef}>
             <Toggle onClick={() => setState('chat')} />
           </div>
@@ -61,7 +61,7 @@ const SingleIframeSwitch = () => {
         unmountOnExit
         onEnter={() => updateIframeSize(chatRef.current)}
       >
-        <section className="w-fit">
+        <section className="w-fit m-0">
           <div ref={chatRef}>
             <Chat onClick={() => setState('toggle')} />
           </div>

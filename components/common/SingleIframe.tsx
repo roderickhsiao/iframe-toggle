@@ -46,7 +46,7 @@ const SingleIframe = () => {
   // - Animation happens in sequence, not parallel
 
   return (
-    <section className="w-fit" ref={containerRef}>
+    <section className="w-fit m-0" ref={containerRef}>
       <SwitchTransition>
         <CSSTransition
           key={state}

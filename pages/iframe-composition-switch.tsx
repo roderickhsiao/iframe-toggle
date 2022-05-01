@@ -28,8 +28,7 @@ const IframeCompositionSwitch = () => {
   
   return (
     <>
-      <h1 className="font-sans text-xl m-auto w-full text-center">Single Iframe Switch Layout</h1>
-      <Home />
+      <Home title="Single Iframe Switch Layout" />
       <iframe src="/single-iframe-switch" className="fixed right-0 bottom-0 border-0 w-0 h-0 overflow-hidden" ref={iframeRef} />
     </>
   );

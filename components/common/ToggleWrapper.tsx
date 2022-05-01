@@ -32,7 +32,7 @@ const ToggleWrapper = () => {
   }, [updateIframeSize]);
 
   return (
-    <section className="w-fit" ref={nodeRef}>
+    <section className="w-fit m-0" ref={nodeRef}>
       <Toggle onClick={switchIframe} />
     </section>
   );
