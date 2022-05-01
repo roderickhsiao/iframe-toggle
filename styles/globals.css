@@ -57,7 +57,7 @@
 .fade-exit {
   transition-duration: 300ms;
   animation-duration: 300ms;
-  will-change: transform;
+  will-change: transform, opacity;
 }
 
 :root {

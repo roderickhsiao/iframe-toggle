@@ -33,7 +33,8 @@ const HomePage = () => {
                 'animate__animated',
                 'animate__fadeInUp',
                 'animate__fadeOutDown',
-                'pointer-events-none'
+                'pointer-events-none',
+                'will-change-auto'
               );
             },
             { once: true }
@@ -45,7 +46,8 @@ const HomePage = () => {
               chat?.classList.remove(
                 'animate__animated',
                 'animate__fadeInUp',
-                'animate__fadeOutDown'
+                'animate__fadeOutDown',
+                'will-change-auto',
               );
               chat?.classList.add('opacity-0');
             },
@@ -60,12 +62,14 @@ const HomePage = () => {
             chat?.classList.add(
               'animate__animated',
               'animate__fadeOutDown',
-              'pointer-events-none'
+              'pointer-events-none',
+              'will-change-auto'
             );
             toggle?.classList.add(
               'animate__animated',
               'animate__fadeInUp',
-              'pointer-events-none'
+              'pointer-events-none',
+              'will-change-auto'
             );
           });
         }
@@ -79,7 +83,8 @@ const HomePage = () => {
                 'animate__animated',
                 'animate__fadeInUp',
                 'animate__fadeOutDown',
-                'pointer-events-none'
+                'pointer-events-none',
+                'will-change-auto'
               );
             },
             { once: true }
@@ -92,7 +97,8 @@ const HomePage = () => {
               toggle?.classList.remove(
                 'animate__animated',
                 'animate__fadeOutDown',
-                'animate__fadeInUp'
+                'animate__fadeInUp',
+                'will-change-auto'
               );
               toggle?.classList.add('opacity-0');
             },
@@ -107,12 +113,14 @@ const HomePage = () => {
             chat?.classList.add(
               'animate__animated',
               'animate__fadeInUp',
-              'pointer-events-none'
+              'pointer-events-none',
+              'will-change-auto'
             );
             toggle?.classList.add(
               'animate__animated',
               'animate__fadeOutDown',
-              'pointer-events-none'
+              'pointer-events-none',
+              'will-change-auto'
             );
           });
         }
