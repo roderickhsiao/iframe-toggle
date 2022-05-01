@@ -21,13 +21,13 @@ const Home = ({
         <title>{title}</title>
       </Head>
 
-      <header className="sticky w-full top-0 border-slate-200 border-b ">
+      <header className="sticky w-full top-0 border-slate-200 border-b">
         <div className="p-3 backdrop-blur-sm">
           <Image src="/logo.webp" width="220" height="52" />
         </div>
       </header>
 
-      <main className="antialiased text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 py-12">
+      <main className="antialiased text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 py-12 isolate z-0">
         <h1 className="text-slate-900 font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-center dark:text-white">
           {title}
         </h1>
@@ -83,6 +83,28 @@ const Home = ({
                 <p className="group-hover:text-blue-200">
                   Use Single Iframe/Single PWA to handle state change, use
                   TransitionGroup
+                </p>
+              </a>
+            </Link>
+          </li>
+          <li
+            className={clsx(
+              'group cursor-pointer rounded-md p-3 bg-white ring-1 ring-slate-200',
+              'shadow-sm hover:bg-blue-500 hover:ring-blue-500 hover:shadow-md',
+              'dark:bg-slate-700 dark:ring-0 dark:highlight-white/10 dark:hover:bg-blue-500',
+              {
+                'ring-blue-500': router.pathname === '/iframe-composition-css',
+              }
+            )}
+          >
+            <Link href="/iframe-composition-css">
+              <a className="grid sm:block lg:grid xl:block grid-cols-2 grid-rows-2 items-center">
+                <h2 className="font-semibold text-slate-900 group-hover:text-white dark:text-slate-100">
+                  Single Iframe Pure CSS
+                </h2>
+                <p className="group-hover:text-blue-200">
+                  Use Single Iframe/Single PWA to handle state change, use
+                  Pure CSS
                 </p>
               </a>
             </Link>

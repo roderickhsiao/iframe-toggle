@@ -29,7 +29,7 @@ const SingleIframeSwitch = () => {
     updateIframeSize(state === 'toggle' ? toggleRef.current : chatRef.current);
   }, []);
 
-  const chatNode = useMemo(
+  const toggleNode = useMemo(
     () => (
       <section className="w-fit m-0 absolute bottom-0 right-0 will-change-auto">
         <div ref={toggleRef}>
@@ -40,7 +40,7 @@ const SingleIframeSwitch = () => {
     []
   );
 
-  const toggleNode = useMemo(
+  const chatNode = useMemo(
     () => (
       <section className="w-fit m-0 will-change-auto">
         <div ref={chatRef}>
@@ -74,16 +74,6 @@ const SingleIframeSwitch = () => {
   return (
     <>
       <CSSTransition
-        in={state === 'toggle'}
-        classNames="switch"
-        timeout={300}
-        mountOnEnter
-        unmountOnExit
-        addEndListener={handleTransitionEnd}
-      >
-        {chatNode}
-      </CSSTransition>
-      <CSSTransition
         in={state === 'chat'}
         classNames="switch"
         timeout={300}
@@ -91,6 +81,16 @@ const SingleIframeSwitch = () => {
         unmountOnExit
         onEnter={() => updateIframeSize(chatRef.current)} // only handle resize on chat (larger screen)
         onExited={() => updateIframeSize(toggleRef.current)} // only handle resize on chat (larger screen)
+        addEndListener={handleTransitionEnd}
+      >
+        {chatNode}
+      </CSSTransition>
+      <CSSTransition
+        in={state === 'toggle'}
+        classNames="switch"
+        timeout={300}
+        mountOnEnter
+        unmountOnExit
         addEndListener={handleTransitionEnd}
       >
         {toggleNode}
