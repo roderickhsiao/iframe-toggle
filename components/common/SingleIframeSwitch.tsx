@@ -46,9 +46,13 @@ const SingleIframeSwitch = () => {
       <CSSTransition
         in={state === 'toggle'}
         classNames="switch"
-        timeout={400}
+        timeout={300}
         mountOnEnter
         unmountOnExit
+        addEndListener={(node, done) => {
+          // use the css transitionend event to mark the finish of a transition
+          node.addEventListener('animationend', done, false);
+        }}
       >
         <section className="w-fit m-0 absolute bottom-0 right-0 will-change-auto">
           <div ref={toggleRef}>
@@ -59,11 +63,15 @@ const SingleIframeSwitch = () => {
       <CSSTransition
         in={state === 'chat'}
         classNames="switch"
-        timeout={400}
+        timeout={300}
         mountOnEnter
         unmountOnExit
         onEnter={() => updateIframeSize(chatRef.current)} // only handle resize on chat (larger screen)
         onExited={() => updateIframeSize(toggleRef.current)} // only handle resize on chat (larger screen)
+        addEndListener={(node, done) => {
+          // use the css transitionend event to mark the finish of a transition
+          node.addEventListener('animationend', done, false);
+        }}
       >
         <section className="w-fit m-0 will-change-auto">
           <div ref={chatRef}>

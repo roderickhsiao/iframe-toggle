@@ -43,9 +43,13 @@ const SingleIframe = () => {
         <CSSTransition
           key={state}
           classNames="fade"
-          timeout={400}
+          timeout={300}
           onEnter={updateIframeSize}
           onExited={updateIframeSize}
+          addEndListener={(node, done) => {
+            // use the css transitionend event to mark the finish of a transition
+            node.addEventListener('animationend', done, false);
+          }}
         >
           {node}
         </CSSTransition>

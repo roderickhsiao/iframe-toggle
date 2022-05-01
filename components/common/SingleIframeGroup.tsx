@@ -49,7 +49,7 @@ const SingleIframeGroup = () => {
       <CSSTransition
         key={state}
         classNames="switch"
-        timeout={400}
+        timeout={300}
         onEnter={
           state === 'chat' ? () => updateIframeSize(chatRef.current) : undefined
         }
@@ -58,6 +58,10 @@ const SingleIframeGroup = () => {
             ? () => updateIframeSize(toggleRef.current)
             : undefined
         }
+        addEndListener={(node, done) => {
+          // use the css transitionend event to mark the finish of a transition
+          node.addEventListener('animationend', done, false);
+        }}
       >
         {node}
       </CSSTransition>
