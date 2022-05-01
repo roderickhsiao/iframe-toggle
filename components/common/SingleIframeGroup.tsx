@@ -32,13 +32,13 @@ const SingleIframeGroup = () => {
   const node = useMemo(() => {
     if (state === 'chat') {
       return (
-        <section className="w-fit m-0" ref={chatRef}>
+        <section className="w-fit m-0 will-change-auto" ref={chatRef}>
           <Chat onClick={() => setState('toggle')} />
         </section>
       );
     }
     return (
-      <section className="w-fit m-0 absolute bottom-0 right-0" ref={toggleRef}>
+      <section className="w-fit m-0 absolute bottom-0 right-0 will-change-auto" ref={toggleRef}>
         <Toggle onClick={() => setState('chat')} />
       </section>
     );

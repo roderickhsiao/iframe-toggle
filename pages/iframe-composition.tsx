@@ -42,7 +42,7 @@ const HomePage = () => {
   return (
     <>
       <Home
-        title="Single Iframe Composition"
+        title="Single Iframe (SwitchTransition)"
         note={note}
         description="Use Single Iframe/Single PWA to handle state change, use SwitchTransition"
       />

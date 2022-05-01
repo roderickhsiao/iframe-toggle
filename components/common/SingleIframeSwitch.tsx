@@ -50,7 +50,7 @@ const SingleIframeSwitch = () => {
         mountOnEnter
         unmountOnExit
       >
-        <section className="w-fit m-0 absolute bottom-0 right-0">
+        <section className="w-fit m-0 absolute bottom-0 right-0 will-change-auto">
           <div ref={toggleRef}>
             <Toggle onClick={() => setState('chat')} />
           </div>
@@ -65,7 +65,7 @@ const SingleIframeSwitch = () => {
         onEnter={() => updateIframeSize(chatRef.current)} // only handle resize on chat (larger screen)
         onExited={() => updateIframeSize(toggleRef.current)} // only handle resize on chat (larger screen)
       >
-        <section className="w-fit m-0">
+        <section className="w-fit m-0 will-change-auto">
           <div ref={chatRef}>
             <Chat onClick={() => setState('toggle')} />
           </div>

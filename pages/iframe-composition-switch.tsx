@@ -42,7 +42,7 @@ const IframeCompositionSwitch = () => {
 
   return (
     <>
-      <Home title="Single Iframe Switch Layout" note={note} description="Current Implementation, use CSSTransition to toggle two layout"/>
+      <Home title="Single Iframe (CSSTransition)" note={note} description="Current Implementation, use CSSTransition to toggle two layout"/>
       <iframe
         src="/single-iframe-switch"
         className="fixed right-0 bottom-0 border-0 w-0 h-0 overflow-hidden"

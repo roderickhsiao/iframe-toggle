@@ -44,7 +44,7 @@ const HomePage = () => {
   return (
     <>
       <Home
-        title="Single Iframe TransitionGroup"
+        title="Single Iframe (TransitionGroup)"
         note={note}
         description="Use Single Iframe/Single PWA to handle state change, TransitionGroup"
       />

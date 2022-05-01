@@ -31,7 +31,7 @@ const ChatWrapper = () => {
   }, [updateIframeSize]);
 
   return (
-    <section className="w-fit m-0" ref={nodeRef}>
+    <section className="w-fit m-0 will-change-auto" ref={nodeRef}>
       <Chat onClick={switchIframe} />
     </section>
   );
