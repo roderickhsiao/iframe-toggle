@@ -105,8 +105,7 @@ const SingleIframeSwitchPureCSS = () => {
       <div
         className={clsx('ease-in-out', 'w-fit m-0 absolute bottom-0 right-0', {
           'will-change-auto animate__animated': isTransitioning,
-          'opacity-0 pointer-events-none invisible':
-            !isTransitioning && iframeState === 'chat',
+          hidden: !isTransitioning && iframeState === 'chat',
           animate__fadeInUp: fromChatToToggle,
           animate__fadeOutDown: fromToggleToChat,
         })}
@@ -117,8 +116,7 @@ const SingleIframeSwitchPureCSS = () => {
       <div
         className={clsx('ease-in-out', 'w-fit m-0', {
           'will-change-auto animate__animated': isTransitioning,
-          'opacity-0 pointer-events-none invisible':
-            !isTransitioning && iframeState === 'toggle',
+          hidden: !isTransitioning && iframeState === 'toggle',
           animate__fadeInUp: fromToggleToChat,
           animate__fadeOutDown: fromChatToToggle,
         })}
