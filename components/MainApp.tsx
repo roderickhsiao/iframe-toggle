@@ -21,7 +21,7 @@ const Home = ({
         <title>{title}</title>
       </Head>
 
-      <header className="sticky w-full top-0 border-slate-200 border-b z-[1]">
+      <header className="sticky w-full top-0 border-slate-200 border-b">
         <div className="p-3 backdrop-blur-sm">
           <Image src="/logo.webp" width="220" height="52" />
         </div>
