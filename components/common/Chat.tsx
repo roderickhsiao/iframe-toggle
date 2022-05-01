@@ -3,7 +3,7 @@ import CloseIcon from '@mui/icons-material/Close';
 
 const Chat = ({ onClick }: { onClick: React.MouseEventHandler }) => {
   return (
-    <div className="p-4">
+    <div className="p-4 will-change-auto">
       <div className="shadow-lg bg-white">
         <div className="container mx-auto w-[22rem] h-[600px] flex">
           <div className="max-w-2xl border rounded">
